@@ -7,11 +7,40 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list class="listContact" (ionsItemReorder)="$event.applyTo(people)">
+    <ion-item-sliding *ngFor="let staff of people">
+      <ion-item (click)="pushPerson(staff)">
+        <ion-avatar>
+          <img [src]="staff.picture.thumbnail" alt="">
+        </ion-avatar>
+        {{staff.name.first}} {{staff.name.last}}
+        <ion-note item-right class="phoneNo">{{staff.phone}}</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" icon-only>
+          <ion-icon name="archive"></ion-icon>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" icon-only>
+          <ion-icon name="flag"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!-- <pre> {{ people | json}}</pre>  -->
+
+  <!-- <ion-list>
     <ion-list-header>Follow us on Twitter</ion-list-header>
     <ion-item>
       <ion-icon name="ionic" item-start></ion-icon>
       @ionicframework
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 </ion-content>

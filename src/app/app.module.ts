@@ -1,7 +1,8 @@
+import { DetailContactPage } from './../pages/detail-contact/detail-contact';
 
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler, Platform } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -12,6 +13,9 @@ import { ActionPage } from './../pages/action/action';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { PeopleProvider } from '../providers/people/people';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,15 +24,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    ActionPage
+    ActionPage,
+    DetailContactPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp,{
       'iconMode': 'ios',
       'tabsLayout': 'icon-right',
       platforms: {
-        ios: {'tabsPlacement': 'bottom'},
+        ios: {'tabsPlacement': 'top'},
         android: {'tabsPlacement': 'top'}
       }
     })
@@ -40,12 +46,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    ActionPage
+    ActionPage,
+    DetailContactPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    PeopleProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}
