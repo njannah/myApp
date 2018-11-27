@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Action Sheets</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="action-sheets-basic-page">
+    <button ion-button block (click)="openMenu()">
+        More
+    </button>
+    <button ion-button block (click)="showPrompt()">
+        Login
+    </button>
+    <button ion-button block (click)="showAlert()">
+        Friend Request Approved
+    </button>
+    <button ion-button block (click)="showConfirm()">
+        Confirm
+    </button>
+    <button ion-button block (click)="showRadio()">
+        Radio
+    </button>
+    <button ion-button block color="danger" (click)="doCheckbox()">Show Checkbox Alert</button>
+
+    <ion-card (tap)="tapEvent($event)">
+        <ion-item>
+          Tapped: {{tap}} times
+        </ion-item>
+      </ion-card>
+    
+      <ion-card (press)="pressEvent($event)">
+        <ion-item>
+          Pressed: {{press}} times
+        </ion-item>
+      </ion-card>
+    
+      <ion-card (pan)="panEvent($event)">
+        <ion-item>
+          Panned: {{pan}} times
+        </ion-item>
+      </ion-card>
+    
+      <ion-card (swipe)="swipeEvent($event)">
+        <ion-item>
+          Swiped: {{swipe}} times
+        </ion-item>
+    </ion-card>
+
+
+</ion-content>
